@@ -11,7 +11,7 @@ activity <- read.csv("activity.csv")
 
 ##2. Process/transform the data (if necessary) into a format suitable for your analysis:
 
-```r
+```{r}
 names(activity)
 library(lattice)
 activity$date <- as.Date(activity$date, "%Y-%m-%d")
@@ -28,7 +28,7 @@ StepsTotal <- aggregate(steps ~ date, data = activity, sum, na.rm = TRUE)
 
 ##2.If you do not understand the difference between a histogram and a barplot, research the difference between them. Make a histogram of the total number of steps taken each day:
 
-```{r qplot, fig.width=4, fig.height=3, message=FALSE}
+```{r, fig.width=5, fig.height=3, message=FALSE}
 hist(StepsTotal$steps, main = "Total steps by day", xlab = "day", col = "red")
 ```
 
@@ -63,7 +63,7 @@ head(df)
 
 ##Create a histogram
 
-```{r qplot, fig.width=4, fig.height=3, message=FALSE}
+```{r, fig.width=5, fig.height=3, message=FALSE}
 hist(df$steps, main = "Total steps by day", xlab = "day", col = "green")
 ```
 
@@ -77,7 +77,7 @@ time_series <- tapply(activity$steps, activity$interval, mean, na.rm = TRUE)
 
 ##Plot:
 
-```{r qplot, fig.width=4, fig.height=3, message=FALSE}
+```{r, fig.width=5, fig.height=3, message=FALSE}
 plot(row.names(time_series), time_series, type = "l", xlab = "5-min interval", 
     ylab = "Average across all Days", main = "Average number of steps taken", 
     col = "red")
@@ -130,7 +130,7 @@ StepsTotal2 <- aggregate(steps ~ date, data = new_activity, sum, na.rm = TRUE)
 
 ##Histogram
 
-```{r qplot, fig.width=4, fig.height=3, message=FALSE}
+```{r, fig.width=5, fig.height=3, message=FALSE}
 hist(StepsTotal2$steps, main = "Total steps by day", xlab = "day", col = "red")
 ```
 
@@ -169,7 +169,7 @@ names(stepsByDay) <- c("interval", "daylevel", "steps")
 
 ##2. Make a panel plot containing a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis). See the README file in the GitHub repository to see an example of what this plot should look like using simulated data.
 
-```{r qplot, fig.width=4, fig.height=3, message=FALSE}
+```{r, fig.width=5, fig.height=3, message=FALSE}
 xyplot(steps ~ interval | daylevel, stepsByDay, type = "l", layout = c(1, 2), 
     xlab = "Interval", ylab = "Number of steps")
 ```
